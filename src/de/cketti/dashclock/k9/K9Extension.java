@@ -66,7 +66,8 @@ public class K9Extension extends DashClockExtension {
                 .icon(R.drawable.ic_envelope)
                 .status(Integer.toString(unreadCount))
                 .expandedTitle(getString(R.string.unread_title, unreadCount))
-                .expandedBody(body.toString());
+                .expandedBody(body.toString())
+                .clickIntent(K9Helper.getStartK9Intent(this));
 
         publishUpdate(data);
     }
