@@ -3,22 +3,23 @@ package de.cketti.dashclock.k9;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Configuration;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.ListPreference;
+import android.preference.MultiSelectListPreference;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
-import android.preference.PreferenceCategory;
 import android.preference.PreferenceFragment;
 import android.preference.PreferenceManager;
-import android.preference.RingtonePreference;
-import android.text.TextUtils;
 import android.view.MenuItem;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
+import de.cketti.dashclock.k9.K9Helper.Account;
 
 
 /**
@@ -79,25 +80,9 @@ public class SettingsActivity extends PreferenceActivity {
         // Add 'general' preferences.
         addPreferencesFromResource(R.xml.pref_general);
 
-        // Add 'notifications' preferences, and a corresponding header.
-        PreferenceCategory fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_notifications);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_notification);
-
-        // Add 'data and sync' preferences, and a corresponding header.
-        fakeHeader = new PreferenceCategory(this);
-        fakeHeader.setTitle(R.string.pref_header_data_sync);
-        getPreferenceScreen().addPreference(fakeHeader);
-        addPreferencesFromResource(R.xml.pref_data_sync);
-
-        // Bind the summaries of EditText/List/Dialog/Ringtone preferences to
-        // their values. When their values change, their summaries are updated
-        // to reflect the new value, per the Android Design guidelines.
-        bindPreferenceSummaryToValue(findPreference("example_text"));
-        bindPreferenceSummaryToValue(findPreference("example_list"));
-        bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
-        bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+        MultiSelectListPreference accountListPreference =
+                (MultiSelectListPreference) findPreference("accounts_list");
+        new LoadAccounts(this, accountListPreference).execute();
     }
 
     /** {@inheritDoc} */
@@ -136,77 +121,59 @@ public class SettingsActivity extends PreferenceActivity {
         }
     }
 
-    /**
-     * A preference value change listener that updates the preference's summary to reflect its new
-     * value.
-     */
-    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener = new Preference.OnPreferenceChangeListener() {
+    private static Preference.OnPreferenceChangeListener sBindPreferenceSummaryToValueListener =
+            new Preference.OnPreferenceChangeListener() {
 
         @Override
         public boolean onPreferenceChange(Preference preference, Object value) {
-            String stringValue = value.toString();
+            if (preference instanceof MultiSelectListPreference) {
+                MultiSelectListPreference multiListPreference =
+                        (MultiSelectListPreference) preference;
 
-            if (preference instanceof ListPreference) {
-                // For list preferences, look up the correct display value in
-                // the preference's 'entries' list.
-                ListPreference listPreference = (ListPreference) preference;
-                int index = listPreference.findIndexOfValue(stringValue);
+                int accountCount = multiListPreference.getEntries().length;
+                int selectedCount = ((Set<String>) value).size();
 
-                // Set the summary to reflect the new value.
-                preference.setSummary(
-                        index >= 0
-                                ? listPreference.getEntries()[index]
-                                : null);
-
-            } else if (preference instanceof RingtonePreference) {
-                // For ringtone preferences, look up the correct display value
-                // using RingtoneManager.
-                if (TextUtils.isEmpty(stringValue)) {
-                    // Empty values correspond to 'silent' (no ringtone).
-                    preference.setSummary(R.string.pref_ringtone_silent);
-
-                } else {
-                    Ringtone ringtone = RingtoneManager.getRingtone(
-                            preference.getContext(), Uri.parse(stringValue));
-
-                    if (ringtone == null) {
-                        // Clear the summary if there was a lookup error.
-                        preference.setSummary(null);
-                    } else {
-                        // Set the summary to reflect the new ringtone display
-                        // name.
-                        String name = ringtone.getTitle(preference.getContext());
-                        preference.setSummary(name);
-                    }
-                }
+                preference.setSummary(preference.getContext().getString(
+                        R.string.pref_summary_accounts, selectedCount, accountCount));
 
             } else {
-                // For all other preferences, set the summary to the value's
-                // simple string representation.
-                preference.setSummary(stringValue);
+                preference.setSummary(value.toString());
             }
             return true;
         }
     };
 
-    /**
-     * Binds a preference's summary to its value. More specifically, when the preference's value is
-     * changed, its summary (line of text below the preference title) is updated to reflect the
-     * value. The summary is also immediately updated upon calling this method. The exact display
-     * format is dependent on the type of preference.
-     * 
-     * @see #sBindPreferenceSummaryToValueListener
-     */
-    private static void bindPreferenceSummaryToValue(Preference preference) {
-        // Set the listener to watch for value changes.
-        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+    private static void bindPreferenceSummaryToValue(MultiSelectListPreference preference,
+            List<Account> accounts) {
 
-        // Trigger the listener immediately with the preference's
-        // current value.
-        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference,
-                PreferenceManager
-                        .getDefaultSharedPreferences(preference.getContext())
-                        .getString(preference.getKey(), ""));
+        int len = accounts.size();
+        CharSequence[] entries = new CharSequence[len];
+        CharSequence[] entryValues = new CharSequence[len];
+        Set<String> defaultValue = new HashSet<String>();
+
+        int i = 0;
+        for (Account account : accounts) {
+            defaultValue.add(account.uuid);
+            entries[i] = account.name;
+            entryValues[i] = account.uuid;
+            i++;
+        }
+
+        preference.setEntries(entries);
+        preference.setEntryValues(entryValues);
+
+        Set<String> currentValue = PreferenceManager.getDefaultSharedPreferences(
+                preference.getContext()).getStringSet(preference.getKey(), null);
+
+        if (currentValue == null) {
+            preference.setValues(defaultValue);
+            currentValue = defaultValue;
+        }
+
+        preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
+        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference, currentValue);
+
+        preference.setEnabled(true);
     }
 
     /**
@@ -221,52 +188,30 @@ public class SettingsActivity extends PreferenceActivity {
             super.onCreate(savedInstanceState);
             addPreferencesFromResource(R.xml.pref_general);
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("example_text"));
-            bindPreferenceSummaryToValue(findPreference("example_list"));
+            MultiSelectListPreference accountListPreference =
+                    (MultiSelectListPreference) findPreference("accounts_list");
+            new LoadAccounts(getActivity(), accountListPreference).execute();
         }
     }
 
-    /**
-     * This fragment shows notification preferences only. It is used when the activity is showing a
-     * two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class NotificationPreferenceFragment extends PreferenceFragment {
+    static class LoadAccounts extends AsyncTask<Void, Void, List<Account>> {
 
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_notification);
+        private Context mContext;
+        private MultiSelectListPreference mPreference;
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("notifications_new_message_ringtone"));
+        public LoadAccounts(Context context, MultiSelectListPreference preference) {
+            mContext = context;
+            mPreference = preference;
         }
-    }
-
-    /**
-     * This fragment shows data and sync preferences only. It is used when the activity is showing a
-     * two-pane settings UI.
-     */
-    @TargetApi(Build.VERSION_CODES.HONEYCOMB)
-    public static class DataSyncPreferenceFragment extends PreferenceFragment {
 
         @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            addPreferencesFromResource(R.xml.pref_data_sync);
+        protected List<Account> doInBackground(Void... params) {
+            return K9Helper.getAccounts(mContext);
+        }
 
-            // Bind the summaries of EditText/List/Dialog/Ringtone preferences
-            // to their values. When their values change, their summaries are
-            // updated to reflect the new value, per the Android Design
-            // guidelines.
-            bindPreferenceSummaryToValue(findPreference("sync_frequency"));
+        @Override
+        protected void onPostExecute(List<Account> result) {
+            bindPreferenceSummaryToValue(mPreference, result);
         }
     }
 }
