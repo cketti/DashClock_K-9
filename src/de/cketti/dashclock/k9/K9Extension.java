@@ -2,6 +2,11 @@ package de.cketti.dashclock.k9;
 
 import java.util.List;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
+
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
 
@@ -9,6 +14,30 @@ import de.cketti.dashclock.k9.K9Helper.Account;
 
 
 public class K9Extension extends DashClockExtension {
+
+    private BroadcastReceiver mReceiver = new BroadcastReceiver() {
+
+        @Override
+        public void onReceive(Context context, Intent intent) {
+            onUpdateData(UPDATE_REASON_CONTENT_CHANGED);
+        }
+    };
+
+    @Override
+    protected void onInitialize(boolean isReconnect) {
+        IntentFilter filter = new IntentFilter();
+        filter.addAction(K9Helper.BroadcastIntents.ACTION_EMAIL_RECEIVED);
+        filter.addAction(K9Helper.BroadcastIntents.ACTION_EMAIL_DELETED);
+        filter.addAction(K9Helper.BroadcastIntents.ACTION_REFRESH_OBSERVER);
+
+        registerReceiver(mReceiver, filter);
+    }
+
+    @Override
+    public void onDestroy() {
+        unregisterReceiver(mReceiver);
+        super.onDestroy();
+    }
 
     @Override
     protected void onUpdateData(int reason) {
