@@ -38,6 +38,7 @@
         <activity
             android:name="de.cketti.dashclock.k9.SettingsActivity"
             android:label="@string/title_activity_settings"
+            android:icon="@drawable/ic_envelope"
             android:exported="true" >
         </activity>
     </application>
