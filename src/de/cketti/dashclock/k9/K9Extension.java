@@ -10,6 +10,7 @@ public class K9Extension extends DashClockExtension {
     protected void onUpdateData(int reason) {
         ExtensionData data = new ExtensionData()
                 .visible(true)
+                .icon(R.drawable.ic_envelope)
                 .status("42")
                 .expandedTitle("Title here")
                 .expandedBody("More text here");
