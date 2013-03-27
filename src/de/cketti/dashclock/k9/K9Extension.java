@@ -19,7 +19,7 @@ public class K9Extension extends DashClockExtension {
 
         @Override
         public void onReceive(Context context, Intent intent) {
-            onUpdateData(UPDATE_REASON_CONTENT_CHANGED);
+            updateDataInBackground(UPDATE_REASON_CONTENT_CHANGED);
         }
     };
 

@@ -236,13 +236,7 @@ public abstract class DashClockExtension extends Service {
                 return;
             }
 
-            // Do this in a separate thread
-            mServiceHandler.post(new Runnable() {
-                @Override
-                public void run() {
-                    DashClockExtension.this.onUpdateData(reason);
-                }
-            });
+            updateDataInBackground(reason);
         }
     };
 
@@ -321,5 +315,21 @@ public abstract class DashClockExtension extends Service {
         } catch (RemoteException e) {
             Log.e(TAG, "Couldn't set the extension to update upon ACTION_SCREEN_ON.", e);
         }
+    }
+
+    /**
+     * Call {@link #onUpdateData(int)} from a background thread.
+     *
+     * @param reason
+     *         See {@link #onUpdateData(int)}
+     */
+    public void updateDataInBackground(final int reason) {
+        // Do this in a separate thread
+        mServiceHandler.post(new Runnable() {
+            @Override
+            public void run() {
+                DashClockExtension.this.onUpdateData(reason);
+            }
+        });
     }
 }
