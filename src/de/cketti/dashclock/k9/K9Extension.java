@@ -1,11 +1,14 @@
 package de.cketti.dashclock.k9;
 
 import java.util.List;
+import java.util.Set;
 
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.preference.PreferenceManager;
 
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
@@ -45,9 +48,16 @@ public class K9Extension extends DashClockExtension {
         int unreadCount = 0;
         StringBuilder body = new StringBuilder();
 
+        SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
+        Set<String> enabledAccounts = sp.getStringSet("accounts_list", null);
+
         List<Account> accounts = K9Helper.getAccounts(this);
         if (accounts != null) {
             for (Account account : accounts) {
+                if (enabledAccounts != null && !enabledAccounts.contains(account.uuid)) {
+                    continue;
+                }
+
                 int accountUnread = K9Helper.getUnreadCount(this, account);
                 unreadCount += accountUnread;
 
