@@ -16,6 +16,7 @@ import android.view.MenuItem;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
@@ -151,6 +152,10 @@ public class SettingsActivity extends PreferenceActivity {
         CharSequence[] entryValues = new CharSequence[len];
         Set<String> defaultValue = new HashSet<String>();
 
+        Set<String> savedUuids = PreferenceManager.getDefaultSharedPreferences(
+                preference.getContext()).getStringSet(preference.getKey(), null);
+
+        // Populate MultiSelectListPreference with entries for all available accounts
         int i = 0;
         for (Account account : accounts) {
             defaultValue.add(account.uuid);
@@ -158,20 +163,29 @@ public class SettingsActivity extends PreferenceActivity {
             entryValues[i] = account.uuid;
             i++;
         }
-
         preference.setEntries(entries);
         preference.setEntryValues(entryValues);
 
-        Set<String> currentValue = PreferenceManager.getDefaultSharedPreferences(
-                preference.getContext()).getStringSet(preference.getKey(), null);
-
-        if (currentValue == null) {
-            preference.setValues(defaultValue);
-            currentValue = defaultValue;
+        // Check currently selected accounts
+        Set<String> selectedAccounts;
+        if (savedUuids == null) {
+            // Select all accounts if there was no saved configuration
+            selectedAccounts = defaultValue;
+        } else {
+            // Clear out accounts that no longer exist
+            selectedAccounts = new HashSet<String>(savedUuids);
+            for (Iterator<String> iter = selectedAccounts.iterator(); iter.hasNext(); ) {
+                String accountUuid = iter.next();
+                if (!defaultValue.contains(accountUuid)) {
+                    iter.remove();
+                }
+            }
         }
+        preference.setValues(selectedAccounts);
+
 
         preference.setOnPreferenceChangeListener(sBindPreferenceSummaryToValueListener);
-        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference, currentValue);
+        sBindPreferenceSummaryToValueListener.onPreferenceChange(preference, selectedAccounts);
 
         preference.setEnabled(true);
     }
@@ -211,7 +225,9 @@ public class SettingsActivity extends PreferenceActivity {
 
         @Override
         protected void onPostExecute(List<Account> result) {
-            bindPreferenceSummaryToValue(mPreference, result);
+            if (result.size() > 0) {
+                bindPreferenceSummaryToValue(mPreference, result);
+            }
         }
     }
 }
