@@ -45,6 +45,10 @@ public class K9Extension extends DashClockExtension {
     @Override
     protected void onUpdateData(int reason) {
 
+        if (!isK9AvailableAndSetUp()) {
+            return;
+        }
+
         int unreadCount = 0;
         StringBuilder body = new StringBuilder();
 
@@ -82,4 +86,30 @@ public class K9Extension extends DashClockExtension {
         publishUpdate(data);
     }
 
+    private void displayErrorMessage(int resId) {
+        ExtensionData data = new ExtensionData()
+            .visible(true)
+            .icon(R.drawable.ic_envelope)
+            .status(getString(R.string.status_error))
+            .expandedTitle(getString(R.string.status_error))
+            .expandedBody(getString(resId))
+            .clickIntent(K9Helper.getStartK9Intent(this));
+
+        publishUpdate(data);
+    }
+
+    private boolean isK9AvailableAndSetUp() {
+        boolean installed = K9Helper.isK9Installed(this);
+        boolean enabled = K9Helper.isK9Enabled(this);
+
+        if (!installed) {
+            displayErrorMessage(R.string.error_k9_not_installed);
+            return false;
+        } else if (!enabled) {
+            displayErrorMessage(R.string.error_k9_not_enabled);
+            return false;
+        }
+
+        return true;
+    }
 }

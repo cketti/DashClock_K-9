@@ -6,4 +6,9 @@
     <string name="extension_description">Displays the number of unread messages in K-9 Mail.</string>
 
     <string name="unread_title">%d unread</string>
+
+    <string name="status_error">Error</string>
+
+    <string name="error_k9_not_installed">K-9 Mail is not installed.</string>
+    <string name="error_k9_not_enabled">Please set up an account in K-9 Mail.</string>
 </resources>

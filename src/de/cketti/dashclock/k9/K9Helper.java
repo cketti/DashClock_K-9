@@ -8,6 +8,8 @@ import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.pm.ResolveInfo;
 import android.database.Cursor;
 import android.net.Uri;
 import android.util.Log;
@@ -17,6 +19,11 @@ import android.util.Log;
  * Helper class to interface with K-9 Mail.
  */
 public class K9Helper {
+    /**
+     * K-9 Mail's package name.
+     */
+    public static final String PACKAGE_NAME = "com.fsck.k9";
+
     /**
      * Permission required to access K-9 Mail's public content provider.
      */
@@ -286,7 +293,7 @@ public class K9Helper {
         try {
             Intent intent = new Intent();
             PackageManager manager = context.getPackageManager();
-            intent = manager.getLaunchIntentForPackage("com.fsck.k9");
+            intent = manager.getLaunchIntentForPackage(PACKAGE_NAME);
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
             return intent;
         } catch (Exception e) {
@@ -294,4 +301,41 @@ public class K9Helper {
         }
     }
 
+    /**
+     * Find out whether or not K-9 Mail is installed.
+     *
+     * @param context
+     *         Used to retrieve the package manager.
+     *
+     * @return {@code true} if K-9 Mail is installed, {@code false} otherwise.
+     */
+    public static final boolean isK9Installed(Context context) {
+        PackageManager manager = context.getPackageManager();
+        try {
+            manager.getPackageInfo(PACKAGE_NAME, 0);
+            return true;
+        } catch (NameNotFoundException e) {
+            return false;
+        }
+    }
+
+    /**
+     * Find out if K-9 Mail is enabled, i.e. an account was set up.
+     *
+     * @param context
+     *         Used to retrieve the package manager.
+     *
+     * @return {@code true} if K-9 Mail is enabled, {@code false} otherwise.
+     */
+    public static final boolean isK9Enabled(Context context) {
+        PackageManager manager = context.getPackageManager();
+        try {
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
+            intent.setPackage(PACKAGE_NAME);
+            List<ResolveInfo> results = manager.queryIntentActivities(intent, 0);
+            return (results != null && results.size() > 0);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }
