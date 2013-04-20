@@ -17,7 +17,7 @@
     <string name="label_about">About</string>
     <string name="about_text"><![CDATA[
         <p>
-        <strong>K-9 Mail DashClock Extension</strong><br>
+        <strong>K-9 Mail DashClock Extension</strong> v%s<br>
         by <a href="https://plus.google.com/110214177917096895451">cketti</a>.
         </p><p>
         The source code was released under the Apache License, Version 2.0 and is available here:<br>

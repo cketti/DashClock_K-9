@@ -1,9 +1,12 @@
 package de.cketti.dashclock.k9;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.app.Dialog;
 import android.app.DialogFragment;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -26,11 +29,24 @@ public class AboutDialogFragment extends DialogFragment {
         View view = LayoutInflater.from(getActivity()).inflate(R.layout.about_dialog, null);
 
         TextView about = (TextView) view.findViewById(R.id.about_text);
-        about.setText(Html.fromHtml(getString(R.string.about_text)));
+        about.setText(Html.fromHtml(getString(R.string.about_text, getVersionName())));
         about.setMovementMethod(LinkMovementMethod.getInstance());
 
         builder.setView(view);
 
         return builder.create();
+    }
+
+    private String getVersionName() {
+        String version = "?";
+        try {
+            Activity context = getActivity();
+            String packageName = context.getPackageName();
+            PackageInfo pi = context.getPackageManager().getPackageInfo(packageName, 0);
+            version = pi.versionName;
+        } catch (PackageManager.NameNotFoundException e) {
+            // do nothing
+        }
+        return version;
     }
 }
