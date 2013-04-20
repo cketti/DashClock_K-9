@@ -238,7 +238,7 @@ public class SettingsActivity extends PreferenceActivity {
 
         @Override
         protected void onPostExecute(List<Account> result) {
-            if (result.size() > 0) {
+            if (result != null && result.size() > 0) {
                 bindPreferenceSummaryToValue(mPreference, result);
             }
         }
