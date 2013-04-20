@@ -226,8 +226,16 @@ public class K9Helper {
                 while (cursor.moveToNext()) {
                     int accountNumber = cursor.getInt(0);
                     String accountName = cursor.getString(1);
-                    String accountUuid = cursor.getString(2);
-                    int accountColor = cursor.getInt(3);
+
+                    String accountUuid;
+                    int accountColor;
+                    if (cursor.getColumnCount() > 2) {
+                        accountUuid = cursor.getString(2);
+                        accountColor = cursor.getInt(3);
+                    } else {
+                        accountUuid = Integer.toString(accountNumber);
+                        accountColor = 0;
+                    }
 
                     accounts.add(new Account(accountNumber, accountName, accountUuid, accountColor));
                 }
