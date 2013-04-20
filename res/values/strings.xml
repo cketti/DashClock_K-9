@@ -11,4 +11,17 @@
 
     <string name="error_k9_not_installed">K-9 Mail is not installed.</string>
     <string name="error_k9_not_enabled">Please set up an account in K-9 Mail.</string>
+
+    <string name="settings_menu_about">About</string>
+
+    <string name="label_about">About</string>
+    <string name="about_text"><![CDATA[
+        <p>
+        <strong>K-9 Mail DashClock Extension</strong><br>
+        by <a href="https://plus.google.com/110214177917096895451">cketti</a>.
+        </p><p>
+        The source code was released under the Apache License, Version 2.0 and is available here:<br>
+        <a href="https://github.com/cketti/DashClock_K-9">https://github.com/cketti/DashClock_K-9</a>
+        </p>
+    ]]></string>
 </resources>
