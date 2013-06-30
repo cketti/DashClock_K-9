@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="title_activity_settings">K-9 Mail Erweiterung Einstellungen</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_title_accounts">Ungelesene Nachrichten für folgende Konten anzeigen</string>
+    <string name="pref_summary_accounts">%1$d von %2$d Konten ausgewählt</string>
+
+
+    <!-- General settings -->
+    <string name="pref_header_general">Allgemeines</string>
+
+</resources>
