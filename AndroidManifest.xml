@@ -33,7 +33,8 @@
             <!-- A settings activity is optional -->
             <meta-data
                 android:name="settingsActivity"
-                android:value=".SettingsActivity" />        </service>
+                android:value=".SettingsActivity" />
+        </service>
 
         <activity
             android:name="de.cketti.dashclock.k9.SettingsActivity"
