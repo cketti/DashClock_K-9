@@ -54,7 +54,10 @@ public class K9Extension extends DashClockExtension {
 
     @Override
     public void onDestroy() {
-        unregisterReceiver(mReceiver);
+        try {
+            unregisterReceiver(mReceiver);
+        } catch (Exception e) { /* ignore */ }
+
         super.onDestroy();
     }
 
