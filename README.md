@@ -5,8 +5,8 @@ This is an extension for the popular DashClock Widget to display the number of u
 [![Get it on Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=de.cketti.dashclock.k9)
 
 
-![Screenshot](images/screenshots/small/01_lockscreen.png)
-![Screenshot](images/screenshots/small/02_settings.png)
+![Screenshot](screenshots/01_lockscreen.png)
+![Screenshot](screenshots/02_settings.png)
 
 
 To use this extension you need to have the following apps installed:
