@@ -17,7 +17,11 @@ To use this extension you need to have the following apps installed:
 
 ## Changelog
 
-### Version 0.1
+### Version 1.1
+* Added German translation
+* Fixed a small bug
+
+### Version 1.0
 * Initial release
 
 
