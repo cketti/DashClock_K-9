@@ -1,0 +1,43 @@
+# K-9 Mail DashClock Extension
+
+This is an extension for the popular DashClock Widget to display the number of unread messages in K-9 Mail, the email app with the robot dog.
+
+[![Get it on Google Play](https://developer.android.com/images/brand/en_generic_rgb_wo_45.png)](https://play.google.com/store/apps/details?id=de.cketti.dashclock.k9)
+
+
+![Screenshot](images/screenshots/small/01_lockscreen.png)
+![Screenshot](images/screenshots/small/02_settings.png)
+
+
+To use this extension you need to have the following apps installed:
+
+* [DashClock Widget](https://play.google.com/store/apps/details?id=net.nurik.roman.dashclock)
+* [K-9 Mail](https://play.google.com/store/apps/details?id=com.fsck.k9)
+
+
+## Changelog
+
+### Version 0.1
+* Initial release
+
+
+## Contribute
+
+Please base your pull requests on the [dev](https://github.com/cketti/DashClock_K-9/tree/dev) branch.
+
+
+## License
+
+    Copyright (C) 2013 Christian Ketterer (cketti)
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
