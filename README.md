@@ -17,6 +17,10 @@ To use this extension you need to have the following apps installed:
 
 ## Changelog
 
+### Version 1.2
+* Added Slovak translation
+* Fixed a bug that crashed the extension when K-9 Mail handed out an empty account name
+
 ### Version 1.1
 * Added German translation
 * Fixed a small bug
@@ -28,6 +32,10 @@ To use this extension you need to have the following apps installed:
 ## Contribute
 
 Please base your pull requests on the [dev](https://github.com/cketti/DashClock_K-9/tree/dev) branch.
+
+
+## Contributors
+* pyler (Slovak translation)
 
 
 ## License
