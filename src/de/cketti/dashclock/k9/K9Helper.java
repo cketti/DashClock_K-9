@@ -253,7 +253,10 @@ public class K9Helper {
                         accountColor = 0;
                     }
 
-                    accounts.add(new Account(accountNumber, accountName, accountUuid, accountColor));
+                    if (accountName != null && accountUuid != null) {
+                        accounts.add(new Account(accountNumber, accountName, accountUuid,
+                                accountColor));
+                    }
                 }
             } finally {
                 cursor.close();
