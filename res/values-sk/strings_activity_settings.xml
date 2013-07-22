@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="title_activity_settings">Nastavenia K-9 Mail rozšírenia</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_title_accounts">Zobraziť počet neprečítaných správ pre účty</string>
+    <string name="pref_summary_accounts">Počet vybraných účtov: %1$d z %2$d</string>
+
+
+    <!-- General settings -->
+    <string name="pref_header_general">Všeobecné</string>
+
+</resources>

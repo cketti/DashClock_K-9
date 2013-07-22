@@ -1,0 +1,27 @@
+<resources>
+
+    <string name="app_name">K-9 Mail DashClock Extension</string>
+
+    <string name="extension_title">K-9 Mail</string>
+    <string name="extension_description">Zobrazí počet neprečítaných e-mailov v K-9 Mail.</string>
+
+    <string name="unread_title">Neprečítané e-maily: %d</string>
+
+    <string name="status_error">Chyba</string>
+
+    <string name="error_k9_not_installed">Aplikácia K-9 Mail nie je nainštalovaná.</string>
+    <string name="error_k9_not_enabled">Prosím nastavte účet v K-9 Mail.</string>
+
+    <string name="settings_menu_about">O aplikácii</string>
+
+    <string name="label_about">O aplikácii</string>
+    <string name="about_text"><![CDATA[
+        <p>
+        <strong>K-9 Mail DashClock Extension</strong> v%s<br>
+        od <a href="https://plus.google.com/110214177917096895451">cketti</a>.
+        </p><p>
+        Zdrojový kód bol uvoľnený pod Apache licenciou, verzia 2.0 a je k dispozícii tu:<br>
+        <a href="https://github.com/cketti/DashClock_K-9">https://github.com/cketti/DashClock_K-9</a>
+        </p>
+    ]]></string>
+</resources>
