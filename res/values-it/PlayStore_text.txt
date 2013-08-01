@@ -1,0 +1,10 @@
+Questa è un'estensione per il widget DashClock che consente di visualizzare il numero di messaggi non letti in K-9 Mail,
+l'applicazione e-mail con il cane robot.
+
+Per utilizzare questa estensione è necessario avere le seguenti applicazioni installate:
+
+DashClock Widget
+K-9 Mail
+
+Se questa applicazione vi dà problemi, per favore scrivete una mail utilizzando il link "Contatta lo sviluppatore"
+nello Store.
