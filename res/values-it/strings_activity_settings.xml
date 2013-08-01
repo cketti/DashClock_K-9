@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="title_activity_settings">K-9 Mail Extension Settings</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_title_accounts">Mostra i messaggi non letti per questi account</string>
+    <string name="pref_summary_accounts">%1$d di %2$d account selezionati</string>
+
+
+    <!-- General settings -->
+    <string name="pref_header_general">Generali</string>
+
+</resources>
