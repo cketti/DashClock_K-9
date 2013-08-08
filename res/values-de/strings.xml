@@ -11,6 +11,7 @@
 
     <string name="error_k9_not_installed">K-9 Mail ist nicht installiert.</string>
     <string name="error_k9_not_enabled">Bitte füge ein Konto in K-9 Mail hinzu.</string>
+    <string name="error_k9_no_permission">Notwendige Berechtigung für K-9 Mail fehlt. Bitte %s erneut installieren.</string>
 
     <string name="settings_menu_about">Über</string>
 
