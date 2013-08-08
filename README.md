@@ -36,6 +36,7 @@ Please base your pull requests on the [dev](https://github.com/cketti/DashClock_
 
 ## Contributors
 * pyler (Slovak translation)
+* [valentino1982](https://github.com/valentino1982) (Italian translation)
 
 
 ## License
