@@ -318,9 +318,8 @@ public class K9Helper {
      */
     public static final Intent getStartK9Intent(Context context) {
         try {
-            Intent intent = new Intent();
             PackageManager manager = context.getPackageManager();
-            intent = manager.getLaunchIntentForPackage(PACKAGE_NAME);
+            Intent intent = manager.getLaunchIntentForPackage(PACKAGE_NAME);
             intent.addCategory(Intent.CATEGORY_LAUNCHER);
             return intent;
         } catch (Exception e) {
