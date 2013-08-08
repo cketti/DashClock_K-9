@@ -24,6 +24,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.preference.PreferenceManager;
 
 import com.google.android.apps.dashclock.api.DashClockExtension;
@@ -33,6 +34,8 @@ import de.cketti.dashclock.k9.K9Helper.Account;
 
 
 public class K9Extension extends DashClockExtension {
+    private static final String PLAY_STORE_URL_PREFIX =
+            "https://play.google.com/store/apps/details?id=";
 
     private BroadcastReceiver mReceiver = new BroadcastReceiver() {
 
@@ -105,14 +108,14 @@ public class K9Extension extends DashClockExtension {
         publishUpdate(data);
     }
 
-    private void displayErrorMessage(int resId) {
+    private void displayErrorMessage(int resId, Intent intent) {
         ExtensionData data = new ExtensionData()
             .visible(true)
             .icon(R.drawable.ic_envelope)
             .status(getString(R.string.status_error))
             .expandedTitle(getString(R.string.status_error))
             .expandedBody(getString(resId))
-            .clickIntent(K9Helper.getStartK9Intent(this));
+            .clickIntent(intent);
 
         publishUpdate(data);
     }
@@ -122,13 +125,18 @@ public class K9Extension extends DashClockExtension {
         boolean enabled = K9Helper.isK9Enabled(this);
 
         if (!installed) {
-            displayErrorMessage(R.string.error_k9_not_installed);
+            displayErrorMessage(R.string.error_k9_not_installed, getPlayStoreIntent());
             return false;
         } else if (!enabled) {
-            displayErrorMessage(R.string.error_k9_not_enabled);
+            displayErrorMessage(R.string.error_k9_not_enabled, K9Helper.getStartK9Intent(this));
             return false;
         }
 
         return true;
+    }
+
+    private Intent getPlayStoreIntent() {
+        Uri uri = Uri.parse(PLAY_STORE_URL_PREFIX + K9Helper.PACKAGE_NAME);
+        return new Intent(Intent.ACTION_VIEW, uri);
     }
 }
