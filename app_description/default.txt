@@ -1,0 +1,17 @@
+--- Title ---
+K-9 Mail DashClock Extension
+
+--- Description ---
+This is an extension for the popular DashClock Widget to display the number of unread messages in K-9 Mail, the email app with the robot dog.
+
+
+To use this extension you need to have the following apps installed:
+• <a href="https://play.google.com/store/apps/details?id=net.nurik.roman.dashclock">DashClock Widget</a>
+• <a href="https://play.google.com/store/apps/details?id=com.fsck.k9">K-9 Mail</a>
+
+
+If this app doesn't work for you, please drop me a line using the "email developer" link in the Play store.
+---
+
+--- Promo text ---
+DashClock extension that displays the number of unread messages in K-9 Mail.

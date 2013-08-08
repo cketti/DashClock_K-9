@@ -1,0 +1,17 @@
+--- Title ---
+K-9 Mail DashClock Erweiterung
+
+--- Description ---
+Diese Erweiterung für das populäre DashClock Widget zeigt die Anzahl der ungelesenen Nachrichten in K-9 Mail, der E-Mail-App mit dem Roboter-Hund, an.
+
+
+Um diese Erweiterung benutzen zu können, müssen folgende Apps installiert sein:
+• <a href="https://play.google.com/store/apps/details?id=net.nurik.roman.dashclock">DashClock Widget</a>
+• <a href="https://play.google.com/store/apps/details?id=com.fsck.k9">K-9 Mail</a>
+
+
+Falls diese App bei dir nicht funktioniert, gib mir bitte kurz per E-Mail Bescheid (Link "E-Mail-Adresse des Entwicklers" im Play Store).
+---
+
+--- Promo text ---
+DashClock-Erweiterung - Zeigt Anzahl ungelesener Nachrichten in K-9 Mail an.

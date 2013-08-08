@@ -1,0 +1,17 @@
+--- Title ---
+[UNTRANSLATED] K-9 Mail DashClock Extension
+
+--- Description ---
+Questa è un'estensione per il widget DashClock che consente di visualizzare il numero di messaggi non letti in K-9 Mail, l'applicazione e-mail con il cane robot.
+
+
+Per utilizzare questa estensione è necessario avere le seguenti applicazioni installate:
+• <a href="https://play.google.com/store/apps/details?id=net.nurik.roman.dashclock">DashClock Widget</a>
+• <a href="https://play.google.com/store/apps/details?id=com.fsck.k9">K-9 Mail</a>
+
+
+Se questa applicazione vi dà problemi, per favore scrivete una mail utilizzando il link "Contatta lo sviluppatore" nello Store.
+---
+
+--- Promo text ---
+[UNTRANSLATED] DashClock extension that displays the number of unread messages in K-9 Mail.
