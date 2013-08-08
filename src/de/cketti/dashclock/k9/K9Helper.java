@@ -364,4 +364,22 @@ public class K9Helper {
             return false;
         }
     }
+
+    /**
+     * Find out if we have the permission to access K-9 Mail's content provider.
+     *
+     * @param context
+     *         Used to retrieve the package manager.
+     *
+     * @return {@code true} if we have the needed permission, {@code false} otherwise.
+     */
+    public static final boolean hasK9ReadPermission(Context context) {
+        PackageManager manager = context.getPackageManager();
+        try {
+            return (manager.checkPermission(PERMISSION, context.getPackageName()) ==
+                    PackageManager.PERMISSION_GRANTED);
+        } catch (Exception e) {
+            return false;
+        }
+    }
 }

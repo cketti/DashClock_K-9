@@ -230,7 +230,7 @@ public class SettingsActivity extends PreferenceActivity {
         }
     }
 
-    static class LoadAccounts extends AsyncTask<Void, Void, List<Account>> {
+    static class LoadAccounts extends AsyncTask<Void, String, List<Account>> {
 
         private Context mContext;
         private MultiSelectListPreference mPreference;
@@ -242,7 +242,31 @@ public class SettingsActivity extends PreferenceActivity {
 
         @Override
         protected List<Account> doInBackground(Void... params) {
+            if (!K9Helper.isK9Installed(mContext)) {
+                publishProgress(mContext.getString(R.string.error_k9_not_installed));
+                return null;
+            }
+
+            if (!K9Helper.isK9Enabled(mContext)) {
+                publishProgress(mContext.getString(R.string.error_k9_not_enabled));
+                return null;
+            }
+
+            if (!K9Helper.hasK9ReadPermission(mContext)) {
+                publishProgress(mContext.getString(R.string.error_k9_no_permission,
+                        mContext.getString(R.string.app_name)));
+                return null;
+            }
+
             return K9Helper.getAccounts(mContext);
+        }
+
+        @Override
+        protected void onProgressUpdate(String... values) {
+            if (values.length > 0) {
+                mPreference.setTitle(mContext.getString(R.string.status_error));
+                mPreference.setSummary(values[0]);
+            }
         }
 
         @Override

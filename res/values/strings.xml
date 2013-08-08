@@ -11,6 +11,7 @@
 
     <string name="error_k9_not_installed">K-9 Mail is not installed.</string>
     <string name="error_k9_not_enabled">Please set up an account in K-9 Mail.</string>
+    <string name="error_k9_no_permission">No permission to access K-9 Mail. Please reinstall %s.</string>
 
     <string name="settings_menu_about">About</string>
 
