@@ -26,6 +26,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.preference.PreferenceManager;
+import android.provider.Settings;
 
 import com.google.android.apps.dashclock.api.DashClockExtension;
 import com.google.android.apps.dashclock.api.ExtensionData;
@@ -108,13 +109,13 @@ public class K9Extension extends DashClockExtension {
         publishUpdate(data);
     }
 
-    private void displayErrorMessage(int resId, Intent intent) {
+    private void displayErrorMessage(String errorMessage, Intent intent) {
         ExtensionData data = new ExtensionData()
             .visible(true)
             .icon(R.drawable.ic_envelope)
             .status(getString(R.string.status_error))
             .expandedTitle(getString(R.string.status_error))
-            .expandedBody(getString(resId))
+            .expandedBody(errorMessage)
             .clickIntent(intent);
 
         publishUpdate(data);
@@ -123,12 +124,18 @@ public class K9Extension extends DashClockExtension {
     private boolean isK9AvailableAndSetUp() {
         boolean installed = K9Helper.isK9Installed(this);
         boolean enabled = K9Helper.isK9Enabled(this);
+        boolean hasPermission = K9Helper.hasK9ReadPermission(this);
 
         if (!installed) {
-            displayErrorMessage(R.string.error_k9_not_installed, getPlayStoreIntent());
+            displayErrorMessage(getString(R.string.error_k9_not_installed), getPlayStoreIntent());
             return false;
         } else if (!enabled) {
-            displayErrorMessage(R.string.error_k9_not_enabled, K9Helper.getStartK9Intent(this));
+            displayErrorMessage(getString(R.string.error_k9_not_enabled),
+                    K9Helper.getStartK9Intent(this));
+            return false;
+        } else if (!hasPermission) {
+            displayErrorMessage(getString(R.string.error_k9_no_permission,
+                    getString(R.string.app_name)), getAppInfoIntent());
             return false;
         }
 
@@ -138,5 +145,10 @@ public class K9Extension extends DashClockExtension {
     private Intent getPlayStoreIntent() {
         Uri uri = Uri.parse(PLAY_STORE_URL_PREFIX + K9Helper.PACKAGE_NAME);
         return new Intent(Intent.ACTION_VIEW, uri);
+    }
+
+    private Intent getAppInfoIntent() {
+        Uri uri = Uri.fromParts("package", getPackageName(), null);
+        return new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS, uri);
     }
 }
