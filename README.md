@@ -17,6 +17,11 @@ To use this extension you need to have the following apps installed:
 
 ## Changelog
 
+### Version 1.3
+* Improved error handling
+* Stop hiding unnamed accounts
+* Added Italian translation
+
 ### Version 1.2
 * Added Slovak translation
 * Fixed a bug that crashed the extension when K-9 Mail handed out an empty account name
