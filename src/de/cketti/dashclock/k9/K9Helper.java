@@ -239,9 +239,14 @@ public class K9Helper {
 
             List<Account> accounts = new ArrayList<Account>();
             try {
+                int unnamedCount = 0;
                 while (cursor.moveToNext()) {
                     int accountNumber = cursor.getInt(0);
                     String accountName = cursor.getString(1);
+
+                    if (accountName == null || accountName.length() == 0) {
+                        accountName = "unnamed" + (++unnamedCount);
+                    }
 
                     String accountUuid;
                     int accountColor;
@@ -253,7 +258,7 @@ public class K9Helper {
                         accountColor = 0;
                     }
 
-                    if (accountName != null && accountUuid != null) {
+                    if (accountUuid != null) {
                         accounts.add(new Account(accountNumber, accountName, accountUuid,
                                 accountColor));
                     }
