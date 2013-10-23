@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="title_activity_settings">Réglages de l\'extension K-9 Mail</string>
+
+    <!-- Strings related to Settings -->
+    <string name="pref_title_accounts">Afficher le nombre de messages non lus pour les comptes suivants</string>
+    <string name="pref_summary_accounts">%1$d sur %2$d comptes sélectionnés</string>
+
+
+    <!-- General settings -->
+    <string name="pref_header_general">Général</string>
+
+</resources>
