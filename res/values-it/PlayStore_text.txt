@@ -7,4 +7,4 @@ DashClock Widget
 K-9 Mail
 
 Se questa applicazione vi dà problemi, per favore scrivete una mail utilizzando il link "Contatta lo sviluppatore"
-nello Store.
+nello Store. (Siete pregati se possibile di scrivere in inglese)
