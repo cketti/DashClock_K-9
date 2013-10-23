@@ -1,0 +1,28 @@
+<resources>
+
+    <string name="app_name">Extension K-9 Mail pour DashClock</string>
+
+    <string name="extension_title">K-9 Mail</string>
+    <string name="extension_description">Affiche le nombre de messages non lus dans K-9 Mail.</string>
+
+    <string name="unread_title">%d non lu(s)</string>
+
+    <string name="status_error">Erreur</string>
+
+    <string name="error_k9_not_installed">K-9 Mail n\'est pas installé.</string>
+    <string name="error_k9_not_enabled">Merci de paramétrer un compte dans K-9 Mail.</string>
+    <string name="error_k9_no_permission">Aucune autorisation d\'accès à K-9 Mail. Merci de réinstaller %s.</string>
+
+    <string name="settings_menu_about">A propos</string>
+
+    <string name="label_about">A propos</string>
+    <string name="about_text"><![CDATA[
+        <p>
+        <strong>Extension K-9 Mail pour DashClock</strong> v%s<br>
+        par <a href="https://plus.google.com/110214177917096895451">cketti</a>.
+        </p><p>
+        Le code source est distribué sous la licence Apache version 2.0 et est disponible ici :<br>
+        <a href="https://github.com/cketti/DashClock_K-9">https://github.com/cketti/DashClock_K-9</a>
+        </p>
+    ]]></string>
+</resources>
