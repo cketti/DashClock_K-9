@@ -1,13 +1,13 @@
 <resources>
 
-    <string name="title_activity_settings">K-9 Mail Extension Settings</string>
+    <string name="title_activity_settings">Настройки расширения</string>
 
     <!-- Strings related to Settings -->
-    <string name="pref_title_accounts">Show unread count for accounts</string>
-    <string name="pref_summary_accounts">%1$d of %2$d accounts selected</string>
+    <string name="pref_title_accounts">Счётчик непрочитанных</string>
+    <string name="pref_summary_accounts">выбрано %1$d из %2$d</string>
 
 
     <!-- General settings -->
-    <string name="pref_header_general">General</string>
+    <string name="pref_header_general">Основные</string>
 
 </resources>
