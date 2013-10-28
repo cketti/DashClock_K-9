@@ -1,0 +1,28 @@
+<resources>
+
+    <string name="app_name">K-9 Mail DashClock Extension</string>
+
+    <string name="extension_title">K-9 Mail</string>
+    <string name="extension_description">Displays the number of unread messages in K-9 Mail.</string>
+
+    <string name="unread_title">%d unread</string>
+
+    <string name="status_error">Error</string>
+
+    <string name="error_k9_not_installed">K-9 Mail is not installed.</string>
+    <string name="error_k9_not_enabled">Please set up an account in K-9 Mail.</string>
+    <string name="error_k9_no_permission">No permission to access K-9 Mail. Please reinstall %s.</string>
+
+    <string name="settings_menu_about">About</string>
+
+    <string name="label_about">About</string>
+    <string name="about_text"><![CDATA[
+        <p>
+        <strong>K-9 Mail DashClock Extension</strong> v%s<br>
+        by <a href="https://plus.google.com/110214177917096895451">cketti</a>.
+        </p><p>
+        The source code was released under the Apache License, Version 2.0 and is available here:<br>
+        <a href="https://github.com/cketti/DashClock_K-9">https://github.com/cketti/DashClock_K-9</a>
+        </p>
+    ]]></string>
+</resources>
