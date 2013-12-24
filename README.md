@@ -17,6 +17,9 @@ To use this extension you need to have the following apps installed:
 
 ## Changelog
 
+### Version 1.4
+* Added French and Russian translation
+
 ### Version 1.3
 * Improved error handling
 * Stop hiding unnamed accounts
