@@ -102,7 +102,7 @@ public class K9Extension extends DashClockExtension {
                 .visible(unreadCount > 0)
                 .icon(R.drawable.ic_envelope)
                 .status(Integer.toString(unreadCount))
-                .expandedTitle(getString(R.string.unread_title, unreadCount))
+                .expandedTitle(getQuantityString(R.plurals.unread_messages_title, unreadCount))
                 .expandedBody(body.toString())
                 .clickIntent(K9Helper.getStartK9Intent(this));
 
