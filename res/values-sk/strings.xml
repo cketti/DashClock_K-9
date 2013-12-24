@@ -6,7 +6,9 @@
     <string name="extension_description">Zobrazí počet neprečítaných e-mailov v K-9 Mail.</string>
 
     <plurals name="unread_title">
-        <item quantity="other">Neprečítané e-maily: %d</item>
+        <item quantity="one">%d neprečítaný e-mail</item>
+        <item quantity="few">%d neprečítané e-maily</item>
+        <item quantity="other">%d neprečítaných e-mailov</item>
     </plurals>
 
     <string name="status_error">Chyba</string>
