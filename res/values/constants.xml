@@ -1,0 +1,3 @@
+<resources>
+    <string name="more_apps_uri">market://search?q=pub:cketti</string>
+</resources>

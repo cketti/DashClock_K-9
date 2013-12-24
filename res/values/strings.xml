@@ -14,6 +14,7 @@
     <string name="error_k9_no_permission">No permission to access K-9 Mail. Please reinstall %s.</string>
 
     <string name="settings_menu_about">About</string>
+    <string name="settings_menu_more_apps">More apps</string>
 
     <string name="label_about">About</string>
     <string name="about_text"><![CDATA[

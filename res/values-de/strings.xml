@@ -14,6 +14,7 @@
     <string name="error_k9_no_permission">Notwendige Berechtigung für K-9 Mail fehlt. Bitte %s erneut installieren.</string>
 
     <string name="settings_menu_about">Über</string>
+    <string name="settings_menu_more_apps">Mehr Apps</string>
 
     <string name="label_about">Über</string>
     <string name="about_text"><![CDATA[

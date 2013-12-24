@@ -17,7 +17,9 @@
 package de.cketti.dashclock.k9;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
+import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.MultiSelectListPreference;
@@ -81,9 +83,20 @@ public class SettingsActivity extends PreferenceActivity {
                 new AboutDialogFragment().show(getFragmentManager(), "about");
                 return true;
             }
+            case R.id.more_apps: {
+                showMoreApps();
+                return true;
+            }
         }
 
         return false;
+    }
+
+    private void showMoreApps() {
+        Intent intent = new Intent(Intent.ACTION_VIEW);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.setData(Uri.parse(getString(R.string.more_apps_uri)));
+        startActivity(intent);
     }
 
     @Override
