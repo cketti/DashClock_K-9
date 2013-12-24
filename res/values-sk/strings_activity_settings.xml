@@ -1,6 +1,6 @@
 <resources>
 
-    <string name="title_activity_settings">Nastavenia K-9 Mail rozšírenia</string>
+    <string name="title_activity_settings">Nastavenia rozšírenia K-9 Mail</string>
 
     <!-- Strings related to Settings -->
     <string name="pref_title_accounts">Zobraziť počet neprečítaných správ pre účty</string>
