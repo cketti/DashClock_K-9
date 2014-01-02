@@ -5,7 +5,9 @@
     <string name="extension_title">K-9 Mail</string>
     <string name="extension_description">Счётчик непрочитанных сообщений K-9 Mail.</string>
 
-    <string name="unread_title">%d не прочитано</string>
+    <plurals name="unread_title">
+        <item quantity="other">%d не прочитано</item>
+    </plurals>
 
     <string name="status_error">Ошибка</string>
 

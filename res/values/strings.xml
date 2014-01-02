@@ -5,7 +5,10 @@
     <string name="extension_title">K-9 Mail</string>
     <string name="extension_description">Displays the number of unread messages in K-9 Mail.</string>
 
-    <string name="unread_title">%d unread</string>
+    <plurals name="unread_title">
+        <item quantity="one">1 unread</item>
+        <item quantity="other">%d unread</item>
+    </plurals>
 
     <string name="status_error">Error</string>
 

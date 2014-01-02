@@ -5,7 +5,9 @@
     <string name="extension_title">K-9 Mail</string>
     <string name="extension_description">Consente di visualizzare il numero di messaggi non letti in K-9 Mail.</string>
 
-    <string name="unread_title">%d Da leggere</string>
+    <plurals name="unread_title">
+        <item quantity="other">%d Da leggere</item>
+    </plurals>
 
     <string name="status_error">Errore</string>
 

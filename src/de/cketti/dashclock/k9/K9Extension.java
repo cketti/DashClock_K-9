@@ -1,5 +1,5 @@
 /*
- * Copyright 2013 Christian Ketterer (cketti)
+ * Copyright 2013-2014 Christian Ketterer (cketti)
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -98,11 +98,14 @@ public class K9Extension extends DashClockExtension {
             }
         }
 
+        String title = getResources().getQuantityString(
+                R.plurals.unread_title, unreadCount, unreadCount);
+
         ExtensionData data = new ExtensionData()
                 .visible(unreadCount > 0)
                 .icon(R.drawable.ic_envelope)
                 .status(Integer.toString(unreadCount))
-                .expandedTitle(getString(R.string.unread_title, unreadCount))
+                .expandedTitle(title)
                 .expandedBody(body.toString())
                 .clickIntent(K9Helper.getStartK9Intent(this));
 
