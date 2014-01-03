@@ -39,7 +39,11 @@ To use this extension you need to have the following apps installed:
 
 ## Contribute
 
+### Code
 Please base your pull requests on the [dev](https://github.com/cketti/DashClock_K-9/tree/dev) branch.
+
+### Translations
+For translations please visit the [DashClock_K-9 project on Transifex](https://www.transifex.com/projects/p/dashclock_k-9/).
 
 
 ## Contributors
@@ -48,7 +52,7 @@ Please base your pull requests on the [dev](https://github.com/cketti/DashClock_
 
 ## License
 
-    Copyright (C) 2013 Christian Ketterer (cketti)
+    Copyright (C) 2013-2014 Christian Ketterer (cketti)
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
