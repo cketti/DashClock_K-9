@@ -1,10 +1,10 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="title_activity_settings">K-9 Mail Extension Settings</string>
 
     <!-- Strings related to Settings -->
     <string name="pref_title_accounts">Show unread count for accounts</string>
-    <string name="pref_summary_accounts">%1$d of %2$d accounts selected</string>
+    <string name="pref_summary_accounts"><xliff:g id="number_of_selected_accounts">%1$d</xliff:g> of <xliff:g id="number_of_accounts">%2$d</xliff:g> accounts selected</string>
 
 
     <!-- General settings -->

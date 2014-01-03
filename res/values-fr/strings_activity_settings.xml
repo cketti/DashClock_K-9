@@ -1,11 +1,10 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="title_activity_settings">Réglages de l\'extension K-9 Mail</string>
 
     <!-- Strings related to Settings -->
     <string name="pref_title_accounts">Afficher le nombre de messages non lus pour les comptes suivants</string>
-    <string name="pref_summary_accounts">%1$d sur %2$d comptes sélectionnés</string>
-
+    <string name="pref_summary_accounts"><xliff:g id="number_of_selected_accounts">%1$d</xliff:g> sur <xliff:g id="number_of_accounts">%2$d</xliff:g> comptes sélectionnés</string>
 
     <!-- General settings -->
     <string name="pref_header_general">Général</string>

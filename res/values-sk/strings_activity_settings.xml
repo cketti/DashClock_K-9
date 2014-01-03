@@ -1,10 +1,10 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="title_activity_settings">Nastavenia rozšírenia K-9 Mail</string>
 
     <!-- Strings related to Settings -->
     <string name="pref_title_accounts">Zobraziť počet neprečítaných správ pre účty</string>
-    <string name="pref_summary_accounts">Počet vybraných účtov: %1$d z %2$d</string>
+    <string name="pref_summary_accounts">Počet vybraných účtov: <xliff:g id="number_of_selected_accounts">%1$d</xliff:g> z <xliff:g id="number_of_accounts">%2$d</xliff:g></string>
 
 
     <!-- General settings -->

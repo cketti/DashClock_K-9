@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">K-9 Mail DashClock Extension</string>
 
@@ -6,7 +6,7 @@
     <string name="extension_description">Consente di visualizzare il numero di messaggi non letti in K-9 Mail.</string>
 
     <plurals name="unread_title">
-        <item quantity="other">%d Da leggere</item>
+        <item quantity="other"><xliff:g id="unread_count">%d</xliff:g> Da leggere</item>
     </plurals>
 
     <string name="status_error">Errore</string>

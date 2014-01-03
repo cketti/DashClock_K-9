@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
 
     <string name="app_name">K-9 Mail DashClock</string>
 
@@ -6,7 +6,7 @@
     <string name="extension_description">Счётчик непрочитанных сообщений K-9 Mail.</string>
 
     <plurals name="unread_title">
-        <item quantity="other">%d не прочитано</item>
+        <item quantity="other"><xliff:g id="unread_count">%d</xliff:g> не прочитано</item>
     </plurals>
 
     <string name="status_error">Ошибка</string>
