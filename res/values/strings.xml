@@ -29,4 +29,7 @@
         <a href="https://github.com/cketti/DashClock_K-9">https://github.com/cketti/DashClock_K-9</a>
         </p>
     ]]></string>
+
+    <!-- For most languages this format string doesn't have to be "translated" -->
+    <string name="account_name_format" translate="false">%1$s (%2$d)</string>
 </resources>

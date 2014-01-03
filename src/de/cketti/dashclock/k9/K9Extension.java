@@ -93,7 +93,8 @@ public class K9Extension extends DashClockExtension {
                         body.append('\n');
                     }
 
-                    body.append(account.name).append(" (").append(accountUnread).append(')');
+                    body.append(
+                            getString(R.string.account_name_format, account.name, accountUnread));
                 }
             }
         }
